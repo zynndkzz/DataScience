@@ -1,0 +1,10 @@
+This repository contains a data set which is diabetes_csv.csv prepared for the use of implementations of machine learning algorithms.
+In the funchion.py file there are 2 method to determine regression line.One of the method includes Least Square
+Solution which has plotting line section inside as well.Other method  is RANSAC algorithm
+which finding best regression line for our problem. Also the final line found in RANSAC solution is saved inside the final.png.
+Other 2 png file figure_0.png and figure_1.png just the example steps of RANSAC iterations.
+
+Also,in computeRmse function calculate the root mean squre errors between the true values and predicted y values for RANSAC and
+Least squared solution respectively.I used only the first 50 sample of data in order the test my functions performance.
+
+
