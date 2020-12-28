@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import sys
+import pylab
+from sklearn.datasets.samples_generator import make_regression
+from scipy import stats
 
 def find_intercept_point(m, c, x0, y0):
     """ find an intercept point of the line model with
@@ -174,18 +177,18 @@ def plot_regression_line(m,x ,y,solverType):
 
     #print("model:",m)
 
+
     plt.scatter(x, y, color = "m",
-            marker = "o", s = 30)
+           marker = "o", s = 30)
 
     # predicted response vector
     y_pred = m["intercept"] + m["slope"]*x
-    #print("y_pred" , y_pred)
+    #print("x",x)
 
     plt.scatter(x, y_pred, color="r",
                 marker="o", s=30)
-
     # plotting the regression line
-    plt.plot(x, y_pred, color = "g",label = "Regression line")
+    plt.plot(x, y_pred, color = "m",label = "Regression Line")
     plt.legend()
     # putting labels
     plt.xlabel('input')
@@ -295,7 +298,9 @@ def performLinearRegression(x, y, solverType):
     else:
         raise Exception("Solver Type is not specified")
 
-    return {m["intercept"], m["slope"], computeRmse(x,y,m["intercept"],m["slope"])}
+
+    return m["intercept"], m["slope"], computeRmse(x,y,m["intercept"],m["slope"])
+
 
 
 if __name__ == '__main__':
@@ -322,5 +327,7 @@ if __name__ == '__main__':
     print(firstRMSE)
     secondInterncept, secondSlope, secondRMSE  = performLinearRegression(X,Y, "Ransac")
     print(secondRMSE)
+
+
 
 
